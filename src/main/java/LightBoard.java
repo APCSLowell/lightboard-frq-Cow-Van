@@ -26,17 +26,21 @@ public class LightBoard
   public boolean evaluateLight(int row, int col)
   {
     /* to be implemented in part (b) */
-    int lightsOnCol = 0;
-    for (int j = 0; j < row; j++) {
-      if (lights[j][col]) {
-        lightsOnCol++;
-      }
-    }
+    int onInColumn = 0;
 
-    if (lights[row][col] && lightsOnCol % 2 == 0) {
-      return false;
-    } else if (!lights[row][col] && lightsOnCol % 3 == 0) {
-      return true;
+    for(int r = 0; r < lights.length; r++)
+        if(lights[r][col])
+            onInColumn++;
+
+    if(lights[row][col])
+    {
+        if(onInColumn % 2 == 0)
+            return false;
+    }
+    else
+    {
+        if(onInColumn % 3 == 0)
+            return true;
     }
 
     return lights[row][col];
